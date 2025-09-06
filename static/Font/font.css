@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "zeddy_font";
+    src: url(Font.ttf);
+}
+*{
+    font-family: "zeddy_font";
+}
+button{
+    cursor: pointer;
+}
