@@ -20,7 +20,7 @@ A clean and functional custom video player built with pure HTML, CSS, and JavaSc
 ## 🚀 Live Demo
 
 Try it here 👇  
-https://zeddy-foreal.github.io/custom-video-player
+https://zeddy-forreal.github.io/custom-video-player
 
 ## 📸 Preview
 
@@ -29,7 +29,7 @@ https://zeddy-foreal.github.io/custom-video-player
 ## 📁 How to Run Locally
 
 ```bash
-git clone https://github.com/zeddy-foreal/custom-video-player.git
+git clone https://github.com/zeddy-forreal/custom-video-player.git
 cd custom-video-player
 # Then open index.html in your browser
 
