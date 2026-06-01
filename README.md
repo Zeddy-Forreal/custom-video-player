@@ -8,9 +8,9 @@
 # 🎬 Custom Video Player
 
 **A sleek, fully custom-built HTML/CSS/JS video player with zero dependencies.**  
-Drop in a local video file and get a cinematic, keyboard-driven playback experience — no libraries, no frameworks, no fluff.
+Upload any local video file through the browser and get a cinematic, keyboard-driven playback experience — no libraries, no frameworks, no fluff.
 
-[Features](#-features) · [Preview](#-preview) · [Getting Started](#-getting-started) · [Keyboard Shortcuts](#-keyboard-shortcuts) · [File Structure](#-file-structure) · [Customization](#-customization)
+[Features](#-features) · [Getting Started](#-getting-started) · [Keyboard Shortcuts](#-keyboard-shortcuts) · [File Structure](#-file-structure) · [Customization](#-customization)
 
 </div>
 
@@ -18,7 +18,8 @@ Drop in a local video file and get a cinematic, keyboard-driven playback experie
 
 ## ✨ Features
 
-- 🎯 **Drag & Drop** — Drop any video file directly onto the player to load it instantly
+- 📂 **File Upload** — Click "Browse files" or "Open" to load any video from your device
+- 🖱️ **Drag & Drop** — Drag a video file directly onto the player to load it instantly
 - ▶️ **Full Playback Controls** — Play, pause, seek, skip ±5s and ±10s
 - 🔊 **Volume Control** — Smooth hover-to-expand volume slider with mute toggle
 - ⚡ **Playback Speed** — 0.25× to 2× speed selection
@@ -33,27 +34,6 @@ Drop in a local video file and get a cinematic, keyboard-driven playback experie
 
 ---
 
-## 👁️ Preview
-
-> The player uses a deep dark theme with a purple accent palette, custom progress bar, animated controls, and a minimal, distraction-free layout.
-
-```
-┌──────────────────────────────────────────┐
-│                                          │
-│            [ Video Area ]                │
-│         Drop file / Browse here          │
-│                                          │
-├──────────────────────────────────────────┤
-│ video-filename.mp4          0:34 / 3:22  │
-├──────────────────────────────────────────┤
-│ ──────────────●────────────────────────  │
-├──────────────────────────────────────────┤
-│ 🔊░░░   |◀  ⏮  ▶  ⏭  ▶|   | 1× ↺ ⛶ │
-└──────────────────────────────────────────┘
-```
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
@@ -63,22 +43,9 @@ git clone https://github.com/Zeddy-Forreal/custom-video-player.git
 cd custom-video-player
 ```
 
-### 2. Project structure
+### 2. Open in browser
 
-```
-custom-video-player/
-├── index.html
-├── style/
-│   └── main.css
-├── javascript/
-│   └── main.js
-└── media/
-    └── (your video files go here)
-```
-
-### 3. Open in browser
-
-No build step needed. Just open `index.html` directly in any modern browser:
+No build step, no installs. Just open `index.html` in any modern browser:
 
 ```bash
 # macOS
@@ -91,12 +58,14 @@ start index.html
 xdg-open index.html
 ```
 
-Or serve it locally for best results:
+### 3. Load a video
 
-```bash
-npx serve .
-# then open http://localhost:3000
-```
+Once the player is open, either:
+- Click **"Browse files"** on the placeholder screen, or
+- Click **"Open"** in the bottom-right controls, or
+- **Drag and drop** any video file directly onto the player
+
+That's it. No uploads to a server, no configuration — everything runs locally in your browser.
 
 ---
 
@@ -117,28 +86,30 @@ npx serve .
 ## 📁 File Structure
 
 ```
-index.html          Main HTML — player markup and structure
-style/main.css      All styles — layout, controls, animations, responsive
-javascript/main.js  All logic — playback, seek, volume, shortcuts, PiP
-media/              Place your local video files here
+custom-video-player/
+├── index.html            Player markup and structure
+├── style/
+│   └── main.css          All styles — layout, controls, animations, responsive
+└── javascript/
+    └── main.js           All logic — playback, seek, volume, shortcuts, PiP
 ```
 
 ---
 
 ## 🎨 Customization
 
-All colors are defined as CSS custom properties at the top of `main.css`. You can retheme the entire player by changing just these variables:
+All colors are CSS custom properties at the top of `main.css`. Change the whole look by editing just these:
 
 ```css
 :root {
-  --bg:         #0a0b0e;   /* Page background       */
-  --shell:      #111318;   /* Player card background */
-  --surface2:   #1d2030;   /* Button hover surfaces  */
-  --line2:      #2d3248;   /* Track / border color   */
-  --accent:     #6c63ff;   /* Primary accent (purple)*/
-  --accent2:    #9d97ff;   /* Lighter accent tint    */
-  --text:       #eef0f8;   /* Primary text           */
-  --text2:      #7b80a0;   /* Secondary / icon color */
+  --bg:         #0a0b0e;   /* Page background        */
+  --shell:      #111318;   /* Player card background  */
+  --surface2:   #1d2030;   /* Button hover surfaces   */
+  --line2:      #2d3248;   /* Track / border color    */
+  --accent:     #6c63ff;   /* Primary accent (purple) */
+  --accent2:    #9d97ff;   /* Lighter accent tint     */
+  --text:       #eef0f8;   /* Primary text            */
+  --text2:      #7b80a0;   /* Secondary / icon color  */
 }
 ```
 
@@ -157,7 +128,7 @@ All colors are defined as CSS custom properties at the top of `main.css`. You ca
 
 ---
 
-## 📄 Supported Video Formats
+## 📦 Supported Video Formats
 
 Depends on the browser's native codec support:
 
@@ -166,26 +137,19 @@ Depends on the browser's native codec support:
 | MP4 (H.264) | ✅ | ✅ | ✅ |
 | WebM (VP8/VP9) | ✅ | ✅ | ⚠️ |
 | MOV | ✅ | ⚠️ | ✅ |
-| OGG | ✅ | ✅ | ❌ |
 | MKV | ✅ | ✅ | ⚠️ |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome.
+Contributions and feature requests are welcome.
 
 1. Fork the repository
 2. Create your branch: `git checkout -b feature/your-feature`
 3. Commit your changes: `git commit -m 'Add your feature'`
 4. Push to the branch: `git push origin feature/your-feature`
 5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
