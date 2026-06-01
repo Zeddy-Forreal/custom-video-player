@@ -1,63 +1,152 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Custom Video Player</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="style/FontAwesome_Icons/all.min.css">
-    <link rel="stylesheet" href="style/FontAwesome_Icons/fontawesome.min.css">
     <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="static/Font/font.css">
-    <link rel="icon" href="static/ST_brand/icon.png">
+    <link rel="icon" href="static/icon.png">
 </head>
 <body>
-    <div class="player">
-        <div class="video_container">
-            <video src="media/Video.mp4" poster="media/thumbnail.png"  type="video/mp4" class="vid2" loop>
-            </video>
+  <input type="file" id="fileInput" accept="video/*" />
+
+<div class="player">
+
+  <div class="video-wrap" id="videoWrap">
+    <video id="vid" preload="metadata"></video>
+
+    <div class="center-play" id="centerPlay">
+      <div class="center-play-icon">
+        <svg id="centerIcon" viewBox="0 0 24 24">
+          <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="drop-overlay" id="dropOverlay">
+      <svg viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p class="drop-title">Drop a video file here</p>
+      <p class="drop-sub">MP4, WebM, MOV, MKV and more</p>
+      <button class="browse-btn" id="browseBtn">
+        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        Browse files
+      </button>
+    </div>
+  </div>
+
+  <div class="info-bar">
+    <span class="vid-name" id="vidName">No file loaded</span>
+    <span class="time-badge" id="timeBadge">0:00 / 0:00</span>
+  </div>
+
+  <div class="progress-row">
+    <div class="track" id="progressTrack">
+      <div class="track-fill"  id="trackFill"></div>
+      <div class="track-thumb" id="trackThumb"></div>
+      <input type="range" id="seekInput" min="0" max="1000" value="0" step="1"/>
+    </div>
+  </div>
+
+  <div class="controls">
+
+    <div class="ctrl-group">
+      <div class="vol-group">
+        <button class="ib" id="muteBtn" aria-label="Mute">
+          <svg id="volSvg" viewBox="0 0 24 24">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 010 14.14"/>
+            <path d="M15.54 8.46a5 5 0 010 7.07"/>
+          </svg>
+        </button>
+        <div class="vol-slider-wrap">
+          <div class="vol-track">
+            <div class="vol-fill" id="volFill"></div>
+            <input type="range" id="volInput" min="0" max="100" value="75" step="1"/>
+          </div>
         </div>
-        
-        <div class="controls_container">
-            <section class="controls">
-            <section class="main_container">
-                <div class="video_range range">
-                    <span class="static"></span>
-                    <input type="range" maxlength="100" value="0">
-                    <span class="follower"></span>
-                </div>
-            </section>
-            <div class="volume_range">
-                <button class="volume"><i class="fa-solid fa-volume-high"></i></button>
-                <div class="range">
-                    <span class="static"></span>
-                    <input type="range" maxlength="100" value="75" class="vol">
-                    <span class="follower"></span>
-                </div>
-            </div>
-            <div class="play_state">
-                <button class="prev adder" data-value="-5"><i class="fa-solid fa-backward-step"></i></button>
-                <button class="play" id="play"><i class="fa-solid fa-play"></i></button>
-                <button class="next adder" data-value="5"><i class="fa-solid fa-forward-step"></i></button>
-            </div>
-            <div class="settings">
-                
-                    <select>
-                        <optgroup label="Play Speed">
-                            <option value="0.25">x0.25</option>
-                            <option value="0.5">x0.50</option>
-                            <option value="0.75">x0.75</option>
-                            <option selected value="1">x1</option>
-                            <option value="1.25">x1.25</option>
-                            <option value="1.75">x1.75</option>
-                            <option value="2">x2</option>
-                        </optgroup>
-                    </select>
-            
-                <button class="fullscreen"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
-            </div>
-        </section>
-        </div>
-     </div>
-<script src="javascript/main.js"></script>
+      </div>
+    </div>
+
+    <div class="ctrl-group">
+      <button class="ib" id="skipBackBtn" aria-label="Back 10s">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.5 12a9.5 9.5 0 1 1 1.54 5.27"/>
+          <polyline points="2 6 2 12 8 12"/>
+          <text x="8.5" y="15" font-size="5.5" fill="currentColor" stroke="none" font-family="Inter,sans-serif" font-weight="700">10</text>
+        </svg>
+      </button>
+      <button class="ib" id="prevBtn" aria-label="Back 5s">
+        <svg viewBox="0 0 24 24">
+          <polygon points="19 20 9 12 19 4 19 20"/>
+          <line x1="5" y1="19" x2="5" y2="5"/>
+        </svg>
+      </button>
+      <button class="play-btn" id="playBtn" aria-label="Play/Pause">
+        <svg id="playSvg" viewBox="0 0 24 24">
+          <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
+        </svg>
+      </button>
+      <button class="ib" id="nextBtn" aria-label="Forward 5s">
+        <svg viewBox="0 0 24 24">
+          <polygon points="5 4 15 12 5 20 5 4"/>
+          <line x1="19" y1="5" x2="19" y2="19"/>
+        </svg>
+      </button>
+      <button class="ib" id="skipFwdBtn" aria-label="Forward 10s">
+        <svg viewBox="0 0 24 24">
+          <path d="M21.5 12a9.5 9.5 0 1 0-1.54 5.27"/>
+          <polyline points="22 6 22 12 16 12"/>
+          <text x="8.5" y="15" font-size="5.5" fill="currentColor" stroke="none" font-family="Inter,sans-serif" font-weight="700">10</text>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ctrl-group" style="gap:6px;">
+      <select class="speed-sel" id="speedSel">
+        <option value="0.25">0.25×</option>
+        <option value="0.5">0.5×</option>
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="1.75">1.75×</option>
+        <option value="2">2×</option>
+      </select>
+      <button class="ib" id="loopBtn" aria-label="Loop">
+        <svg viewBox="0 0 24 24">
+          <polyline points="17 1 21 5 17 9"/>
+          <path d="M3 11V9a4 4 0 014-4h14"/>
+          <polyline points="7 23 3 19 7 15"/>
+          <path d="M21 13v2a4 4 0 01-4 4H3"/>
+        </svg>
+      </button>
+      <button class="ib" id="pipBtn" aria-label="Picture in Picture">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <rect x="12" y="10" width="8" height="6" rx="1"/>
+        </svg>
+      </button>
+      <button class="ib" id="fsBtn" aria-label="Fullscreen">
+        <svg id="fsSvg" viewBox="0 0 24 24">
+          <polyline points="15 3 21 3 21 9"/>
+          <polyline points="9 21 3 21 3 15"/>
+          <line x1="21" y1="3" x2="14" y2="10"/>
+          <line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
+      </button>
+      <button class="open-btn" id="openBtn">
+        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+        Open
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="script/main.js"></script>
 </body>
-</html>
