@@ -21,16 +21,14 @@ Upload any local video file through the browser and get a cinematic, keyboard-dr
 - 📂 **File Upload** — Click "Browse files" or "Open" to load any video from your device
 - 🖱️ **Drag & Drop** — Drag a video file directly onto the player to load it instantly
 - ▶️ **Full Playback Controls** — Play, pause, seek, skip ±5s and ±10s
-- 🔊 **Volume Control** — Smooth hover-to-expand volume slider with mute toggle
+- 🔊 **Volume Control** — Hover-to-expand volume slider with mute toggle
 - ⚡ **Playback Speed** — 0.25× to 2× speed selection
 - 🔁 **Loop Mode** — Toggle seamless looping with a single click
 - 🖼️ **Picture-in-Picture** — Native browser PiP support
 - ⛶ **Fullscreen** — One-click fullscreen with icon state feedback
 - ⌨️ **Keyboard Shortcuts** — Full keyboard control for power users
 - 💡 **Dynamic Icons** — Volume icon updates based on level (high / low / muted)
-- 🎞️ **Center Flash** — Play/pause feedback animation on the video itself
-- 📱 **Responsive** — Adapts cleanly across screen sizes
-- 🚫 **Zero Dependencies** — Pure HTML, CSS, and JavaScript. No npm, no bundler.
+- 🎞️ **Center Flash** — Visual play/pause feedback animation on the video itself
 
 ---
 
@@ -65,7 +63,7 @@ Once the player is open, either:
 - Click **"Open"** in the bottom-right controls, or
 - **Drag and drop** any video file directly onto the player
 
-That's it. No uploads to a server, no configuration — everything runs locally in your browser.
+No server, no configuration — everything runs locally in your browser.
 
 ---
 
@@ -102,7 +100,7 @@ All colors are CSS custom properties at the top of `main.css`. Change the whole 
 
 ```css
 :root {
-  --bg:         #0a0b0e;   /* Page background        */
+  --bg:         #0a0b0e;   /* Page background         */
   --shell:      #111318;   /* Player card background  */
   --surface2:   #1d2030;   /* Button hover surfaces   */
   --line2:      #2d3248;   /* Track / border color    */
@@ -115,41 +113,14 @@ All colors are CSS custom properties at the top of `main.css`. Change the whole 
 
 ---
 
-## 🌐 Browser Support
-
-| Browser | Support |
-|---------|---------|
-| Chrome 80+ | ✅ Full |
-| Firefox 78+ | ✅ Full |
-| Safari 14+ | ✅ Full |
-| Edge 80+ | ✅ Full |
-
-> **Picture-in-Picture** requires Chrome or Edge. Firefox support varies by version.
-
----
-
 ## 📦 Supported Video Formats
 
-Depends on the browser's native codec support:
-
-| Format | Chrome | Firefox | Safari |
-|--------|--------|---------|--------|
-| MP4 (H.264) | ✅ | ✅ | ✅ |
-| WebM (VP8/VP9) | ✅ | ✅ | ⚠️ |
-| MOV | ✅ | ⚠️ | ✅ |
-| MKV | ✅ | ✅ | ⚠️ |
-
----
-
-## 🤝 Contributing
-
-Contributions and feature requests are welcome.
-
-1. Fork the repository
-2. Create your branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m 'Add your feature'`
-4. Push to the branch: `git push origin feature/your-feature`
-5. Open a Pull Request
+| Format | Support |
+|--------|---------|
+| MP4 (H.264) | ✅ |
+| WebM (VP8/VP9) | ✅ |
+| MOV | ✅ |
+| MKV | ✅ |
 
 ---
 
