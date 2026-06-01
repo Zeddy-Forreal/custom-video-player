@@ -59,7 +59,7 @@ Drop in a local video file and get a cinematic, keyboard-driven playback experie
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/custom-video-player.git
+git clone https://github.com/Zeddy-Forreal/custom-video-player.git
 cd custom-video-player
 ```
 
@@ -191,6 +191,6 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 <div align="center">
 
-Made with 🖤 by [your-username](https://github.com/your-username)
+Made with 🖤 by [Zeddy-Forreal](https://github.com/Zeddy-Forreal)
 
 </div>
